@@ -1,0 +1,8 @@
+# cache
+.cache
+
+# k8s
+.kube
+
+# python
+venv/

@@ -1,0 +1,1 @@
+{"type": "bundle", "id": "bundle--6fabe103-0115-4f2b-9948-abf1c61f399d", "spec_version": "2.1", "objects": [{"type": "vulnerability", "id": "vulnerability--80296d1d-eb1c-4343-85d6-a53af579e774", "spec_version": "2.1", "name": "CVE-2020-27350", "external_references": [{"source_name": "cve", "external_id": "CVE-2020-27350"}]}]}

@@ -10,6 +10,7 @@ spec:
         cidr: 0.0.0.0/0
         except:
         - 203.0.113.99/32
+        - 1.2.3.4/32
   podSelector: {}
   policyTypes:
   - Egress

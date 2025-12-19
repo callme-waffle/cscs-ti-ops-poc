@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ti-ops-deploy-scanner
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      serviceAccountName: ti-ops-sa
+      containers:
+      - name: scanner
+        image: ti-ops-orchestrator:latest
+        imagePullPolicy: Never
+        command: ["python3", "orchestrator.py", "deploy"]
+      restartPolicy: Never

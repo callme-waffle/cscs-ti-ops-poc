@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ti-ops-stix-watcher
+spec:
+  schedule: "*/5 * * * *" # 5분마다 실행
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: ti-ops-sa
+          containers:
+          - name: orchestrator
+            image: ti-ops-orchestrator:latest
+            imagePullPolicy: Never # Kind 로드 이미지 사용
+            command: ["python3", "orchestrator.py", "cron"]
+            env:
+            - name: REPO_PATH
+              value: "/project" # 컨테이너 내부 경로
+            volumeMounts:
+            - name: git-repo
+              mountPath: /project
+          restartPolicy: OnFailure
+          volumes:
+          - name: git-repo
+            hostPath:
+              path: /home/waffle/project # 호스트의 실제 프로젝트 경로
+              type: Directory

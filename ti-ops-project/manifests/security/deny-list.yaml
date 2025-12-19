@@ -4,11 +4,12 @@ metadata:
   name: threat-intel-deny-list
   namespace: default
 spec:
-  podSelector: {}
-  policyTypes:
-  - Egress
   egress:
   - to:
     - ipBlock:
         cidr: 0.0.0.0/0
-        except: []
+        except:
+        - 203.0.113.99/32
+  podSelector: {}
+  policyTypes:
+  - Egress
